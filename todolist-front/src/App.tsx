@@ -1,10 +1,12 @@
-import './App.css'
+import { Register } from './pages/criar-conta/page'
+import { Login } from './pages/login/page'
 
 function App() {
 
   return (
     <>
-      <h1>Teste</h1>
+      <Login />
+      <Register />
     </>
   )
 }

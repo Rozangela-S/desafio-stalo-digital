@@ -1,45 +1,122 @@
-/* ModalDotsMenu.module.css */
-.Modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
-
-.MenuContent {
-  display: flex;
-  flex-direction: column;
-}
-
-button {
-  border: none;
-  background: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.CloseButton {
-  margin-top: 10px;
-  background-color: red;
-  color: white;
-}
-
-/* ModalEditTask.module.css */
 .Modal {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin-top: 20rem;
+  margin-left: 13rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  
+}
+  
+.MenuContent {
+  width: 7.5rem;
+  height: 7.5rem;
+  background-color: var(--white);
+  box-shadow: 0 4px 8 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 0.1rem;
+
+}
+  
+.Edit {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 20px;
+  align-self: center;
+  cursor: pointer;
+
+  
+  & svg{
+    align-items: flex-start;
+    padding-right: 1rem;
+
+  }
+  
+  & span {
+  font-family: inter;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  color: var(--gray-light-1);
+  }
+}
+  
+.Concluid {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 20px;
+  align-self: center;
+  cursor: pointer;
+
+  & svg{
+    align-items: flex-start;
+    padding-right: 0.5rem;
+  }
+  
+  & span{
+  font-family: inter;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  color: var(--green);
+  
+  }
+}
+  
+.Delete {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 27px;
+  align-self: center;
+  cursor: pointer;
+
+  & svg{
+    align-items: flex-start;
+    padding-right: 1rem;
+  }
+  
+  & span {
+  font-family: inter;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  color: var(--red);
+  
+  }
 }
 
-.Content {
-  background-color: white;
-  padding: 20px;
+.CloseButton{
+  background-color: transparent;
+  color: var(--gray-light-1);
+  border: none;
+  width: 100%;
+  height: 27px;
+  align-self: center;
+  cursor: pointer;
+
+  font-family: inter;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 0.5px; 
+  padding-left: 0.5rem;
+}
+  
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

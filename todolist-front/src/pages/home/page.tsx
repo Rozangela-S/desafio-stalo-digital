@@ -1,9 +1,10 @@
 import styles from './style.module.css';
-import {DotsThreeVertical, Circle, House, SignOut, Plus} from 'phosphor-react'; 
+import {DotsThreeVertical, Circle, House, SignOut, Plus, CheckCircle} from 'phosphor-react'; 
 import { useState } from 'react';
 import { ModalEditTask } from '../modals/ModalEditTask';
 import { ModalDotsMenu } from '../modals/ModalDotsMenu';
 import {TaskDetails} from '../modals/ModalTaskDetails';
+import { ModalAddTask } from '../modals/ModalCreateTask';
 
 type Task = {
   id: string;
@@ -13,13 +14,20 @@ type Task = {
   status: 'A fazer' | 'Concluída';
 };
 
+const tasksFake: Task[] = [
+  { id: '1', description: 'Tarefa 1', creationDate: '2021-03-17', lastUpdate: '2021-03-18', status: 'A fazer'},
+  { id: '2', description: 'Tarefa 2', creationDate: '2021-03-18', lastUpdate: '2021-03-19', status: 'A fazer'},
+  { id: '3', description: 'Tarefa 3', creationDate: '2021-03-19', lastUpdate: '2021-03-20', status: 'A fazer'},
+];
+
 export function Home () {
-  const [completedTask, setCompletedTask] = useState<Task | null>(null);
+  const [tasks, setTasks] = useState<Task[]>(tasksFake);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isOpenMenuOptions, setIsOpenMenuOptions] = useState<boolean>(false);
   const [isOpenModalDetails, setIsOpenModalDetails] = useState<boolean>(false);
-
   const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
+  const [isAddOpen, setIsAddOpen] = useState<boolean>(false); // Estado para o modal de adicionar nova tarefa
+
 
   const handleOpenModalDetails = (task: Task) => {
     setSelectedTask(task);
@@ -32,15 +40,19 @@ export function Home () {
   }
 
   const handleTaskComplete = (task: Task) => {
-    setCompletedTask ({
-      ...task,
-      status: 'Concluída',
-      lastUpdate: new Date().toLocaleDateString(),
-    });
-  };
-
-  const handleCloseModal = () => {
-    setCompletedTask(null);
+    const indexCompletedTask = tasks.findIndex(t => t.id === task.id);
+  
+    if (indexCompletedTask !== -1) {
+      const updatedTasks = [...tasks];
+  
+      updatedTasks[indexCompletedTask] = {
+        ...tasks[indexCompletedTask],
+        status: 'Concluída',
+        lastUpdate: new Date().toLocaleDateString(),
+      };
+  
+      setTasks(updatedTasks);
+    }
   };
 
   const handleSaveEdit = (newDescription: string) => {
@@ -65,7 +77,9 @@ export function Home () {
     setIsEditOpen (true);
   };
 
-  const handleDeleteTask = (taskId: void) => {
+  const handleDeleteTask = (taskId: string) => {
+    const updatedTask = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTask);
     console.log('Tarefa Excluida', taskId);
   };
 
@@ -73,11 +87,16 @@ export function Home () {
     setIsEditOpen(false);
   };
 
-  const tasks: Task[] = [
-    { id: '1', description: 'Tarefa 1', creationDate: '2021-03-17', lastUpdate: '2021-03-18', status: 'A fazer'},
-    { id: '2', description: 'Tarefa 2', creationDate: '2021-03-18', lastUpdate: '2021-03-19', status: 'A fazer'},
-    { id: '3', description: 'Tarefa 3', creationDate: '2021-03-19', lastUpdate: '2021-03-20', status: 'A fazer'},
-  ];
+  const handleAddTask = (description: string) => {
+    const newTask: Task = {
+      id: (tasks.length + 1).toString(),
+      description,
+      creationDate: new Date().toLocaleDateString(),
+      lastUpdate: new Date().toLocaleDateString(),
+      status: 'A fazer',
+    };
+    setTasks([...tasks, newTask]);
+  };
 
   return (
     <main className={styles.Container}>
@@ -95,21 +114,31 @@ export function Home () {
 
           <section className={styles.TaskList}>
             <ul>
-              {tasks.map((task) => (
-                <li key={task.id}>
-                  <div>
-                    <Circle
-                      size={20}
-                      onClick={() => handleTaskComplete(task)}
-                    />
-                    <span onClick={() => handleOpenModalDetails(task)}>{task.description}</span>
-                  </div>
+              {tasks.map((task) => {
+                return (
+                  <li key={task.id}>
+                    <div>
+                      {task.status === 'Concluída' ?
+                        (
+                          <CheckCircle size={20} color='green' />
+                        ) :
+                        (
+                          <Circle
+                            size={20}
+                            cursor='pointer'
+                            onClick={() => handleTaskComplete(task)}
+                          />
+                        )
+                      }
+                      <span onClick={() => handleOpenModalDetails(task)}>{task.description}</span>
+                    </div>
 
-                  <button type='button' onClick={() => handleOpenMenuOptions(task)}>
-                    <DotsThreeVertical size={20} />
-                  </button>
-                </li>
-              ))}
+                    <button type='button' onClick={() => handleOpenMenuOptions(task)}>
+                      <DotsThreeVertical size={20} />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </section>
           
@@ -128,7 +157,7 @@ export function Home () {
           </div>
           
           <div className={styles.FooterAddTask}>
-            <button type='button'>
+            <button type='button' onClick={() => setIsAddOpen(true)}>
               <Plus size={58} color="white" />
 
               Adicionar
@@ -168,7 +197,10 @@ export function Home () {
             handleEditTask(selectedTask);
             setIsOpenMenuOptions(false);
           }}
-          onDelete={handleDeleteTask}
+          onDelete={() => {
+            handleDeleteTask(selectedTask.id);
+            setIsOpenMenuOptions(false);
+          }}
         />
       )}
 
@@ -179,6 +211,10 @@ export function Home () {
           onClose={handleCloseEditMotal}
           onSave={handleSaveEdit}
         />
+      )}
+
+      {isAddOpen && (
+        <ModalAddTask onClose={() => setIsAddOpen(false)} onAdd={handleAddTask} />
       )}
     </main>
   );

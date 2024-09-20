@@ -18,19 +18,25 @@ export const ModalDotsMenu: React.FC<ModalDotsMenuProps> = ({
   return (
     <div className={styles.Modal}>
       <div className={styles.MenuContent}>
-        <button type="button" onClick={onConclude}>
-          <CheckCircle size={20} /> Concluir
+  
+        <button type="button" onClick={onEdit} className={styles.Edit}>
+          <PencilSimple size={17} color="var(--gray-light-1)" /> 
+          <span>Editar</span>
         </button>
 
-        <button type="button" onClick={onEdit}>
-          <PencilSimple size={20} /> Editar
+        <button type="button" onClick={onConclude} className={styles.Concluid}>
+          <CheckCircle size={17} color="var(--green)" /> 
+          <span>Concluir</span>
         </button>
 
-        <button type="button" onClick={onDelete}>
-          <Trash size={20} /> Excluir 
+        <button type="button" onClick={onDelete} className={styles.Delete}>
+          <Trash size={17} color="var(--red)" /> 
+          <span>Exclui</span>
         </button>
+
+        <button className={styles.CloseButton} onClick={onClose}> 
+          Fechar </button>
       </div>
-      <button className={styles.CloseButton} onClick={onClose}> Fechar </button>
     </div>
   );
 };

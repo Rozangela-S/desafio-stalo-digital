@@ -24,7 +24,7 @@
     line-height: 32px;
     padding: 1rem;
     letter-spacing: 0.5px;
-    color: var(--blue-dark);
+    color: var(--gray-dark);
     align-self: flex-start;
   }
 }
@@ -51,7 +51,7 @@
   font-size: 17px;
   line-height: 27px;
   letter-spacing: 0.5px;
-  color: var(--blue-dark);
+  color: var(--gray-dark);
   margin-top: 7rem;
   align-self: flex-start;
 
@@ -76,7 +76,7 @@
     border: none;
     padding: 15 24 15 24;
     gap: 0.625rem;
-    background-color: var(--blue-light);
+    background-color: var(--gray-light);
 
     font-family: Roboto;
     font-weight: 700;
@@ -91,7 +91,7 @@
   };
 
   & button:hover{
-    background-color: var(--green-100);
+    background-color: var(--green);
   }
 }
 
@@ -122,7 +122,7 @@
     border-bottom: 1px solid rgba(244, 245, 247, 1);
 
     &:hover {
-      background-color: #f0f0f0;
+      background-color: var(--white);
       border-radius: 4px;
     }
 
@@ -158,7 +158,7 @@
 }
 
 .CompleteButton:hover {
-  color: var(--green-100);
+  color: var(--green);
 }
 
 .ModalDotsThreeVertical {
@@ -193,7 +193,7 @@
     gap: 5px;
     border: none;
     background: none;
-    color: var(--blue-dark);
+    color: var(--gray-dark);
     cursor: pointer;
   }
 }
@@ -213,7 +213,7 @@
 
     & svg {  
       border-radius: 50%;
-      background-color: #1FCC79;
+      background-color: var(--green);
     };
   }
 }
@@ -223,7 +223,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: red;
+  background-color: var(--red);
   border-radius: 10px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -232,8 +232,8 @@
 
 .OptionsContent button {
   border: none;
-  background-color: var(--blue-light);
-  color: white;
+  background-color: var(--gray-light);
+  color: var(--white);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -241,5 +241,5 @@
 }
 
 .OptionsContent button:hover {
-  background-color: var(--green-100);
+  background-color: var(--green);
 }

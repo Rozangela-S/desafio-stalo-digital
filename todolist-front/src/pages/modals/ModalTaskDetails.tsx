@@ -46,7 +46,7 @@ export const TaskDetails: React.FC<TaskDetailsProps> = ({
           <span>{status}</span>
         </div>
         
-        <button type="button" onClick={onClose}>Voltar para Home</button>
+        <button type="button" onClick={onClose} className={styles.ButtonHom}>Voltar para Home</button>
       </div>
     </div>
   )

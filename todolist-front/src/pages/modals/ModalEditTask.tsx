@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './styles.Edit.module.css';
-import { useState } from "react";
-
 
 type ModalEditTaskProps = {
   taskDescription: string;
@@ -17,17 +15,31 @@ export const ModalEditTask: React.FC<ModalEditTaskProps> = ({
   const [description, setDescription] = useState(taskDescription || '');
 
   const handleSave = () => {
-    onSave(description);
-    onClose();
+    if (description.trim()) {
+      onSave(description);
+      onClose();
+    }
   };
 
   return (
-    <div className={styles.Modal}>
-      <div className={styles.Content}>
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
         <h2>Editar Tarefa</h2>
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className={styles.Input} />
-        <button type="button" onClick={handleSave}>Salvar</button>
-        <button type="button" onClick={onClose}>Cancelar</button>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className={styles.input}
+          placeholder="Descrição"
+        />
+        <div className={styles.modalActions}>
+          <button className={styles.cancelButton} onClick={onClose}>
+            Cancelar
+          </button>
+          <button className={styles.saveButton} onClick={handleSave}>
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
   );

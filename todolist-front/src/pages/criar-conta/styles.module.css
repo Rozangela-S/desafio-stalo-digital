@@ -13,7 +13,7 @@
   line-height: 32px;
   letter-spacing: 0.5px;
   align-items: center;
-  color: var(--blue-dark)
+  color: var(--gray-dark)
   };
 
  & button {
@@ -23,7 +23,7 @@
   padding: 19 32 19 32;
   gap: 10px;
   border: none;
-  background-color: var(--green-100);
+  background-color: var(--green);
   margin-top: 1.5rem;
 
   font-size: 15px;
@@ -37,7 +37,7 @@
  };
 
  & button:hover {
-  border: solid 1px var(--green-100);
+  border: solid 1px var(--green);
   background-color: var(--green-light);
  }
 
@@ -49,7 +49,7 @@
   letter-spacing: 0.5px;
   text-decoration: none;
   margin-top: 1rem;
-  color: var(--green-100);
+  color: var(--green);
  }
 }
 
@@ -63,7 +63,7 @@
   height: 3.5rem;
   padding-left: 1.25rem;
   margin-top: 0.50rem;
-  border: solid 1px var(--blue-light);
+  border: solid 1px var(--gray-light);
   border-radius: 1.5rem;
  }
 }

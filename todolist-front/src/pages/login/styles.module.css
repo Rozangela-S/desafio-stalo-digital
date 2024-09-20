@@ -13,7 +13,7 @@
     line-height: 32px;
     letter-spacing: 0.5px;
     align-items: center;
-    color: var(--blue-dark)
+    color: var(--gray-dark)
   };
 
   & button {
@@ -24,7 +24,7 @@
     gap: 0.625rem;
     border: none;
     margin-top: 2rem;
-    background-color: var(--green-100);
+    background-color: var(--green);
 
     font-size: 0.94rem;
     line-height: 18px;
@@ -37,7 +37,7 @@
   };
 
   & button:hover {
-    border: solid 1px var(--green-100);
+    border: solid 1px var(--green);
     background-color: var(--green-light);
   }
 }
@@ -52,7 +52,7 @@
     height: 3.5rem;
     padding-left: 1.25rem;
     margin-top: 1rem;
-    border: solid 1px var(--blue-light);
+    border: solid 1px var(--gray-light);
     border-radius: 1.5rem;
   };
 
@@ -64,7 +64,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.5px;
     align-items: right;
-    color: var(--blue-dark);
+    color: var(--gray-dark);
     text-decoration: none;
     margin-top: 1rem;
   }
@@ -78,7 +78,7 @@
     font-size: 15px;
     line-height: 1.5rem;
     letter-spacing: 0.5px;
-    color: var(--blue-dark);
+    color: var(--gray-dark);
   };
 
   & a{
@@ -90,6 +90,6 @@
     align-items: center;
     padding-left: 0.5rem;
     text-decoration: none;
-    color: var(--green-100);
+    color: var(--green);
   }
 }

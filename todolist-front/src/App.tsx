@@ -1,13 +1,12 @@
-import { Register } from './pages/criar-conta/page'
-import { Login } from './pages/login/page'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './routes/Router'
 
 function App() {
 
   return (
-    <>
-      <Login />
-      <Register />
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   )
 }
 

@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import styles from './styles.module.css';
 
 export function Register(){
@@ -16,7 +17,7 @@ export function Register(){
 
       <button>Sing Up</button>
 
-      <a href="#">Voltar para login</a>
+      <Link to='/login'> Voltar para login</Link>
     </main>
   );
 }

@@ -1,0 +1,236 @@
+.Container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > section {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px -4px 56px 0px rgba(31, 204, 121, 0.2);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  };
+
+  & > section > div {
+    flex: 1;
+  };
+
+  & > section > div > h1 {
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 32px;
+    padding: 1rem;
+    letter-spacing: 0.5px;
+    color: var(--blue-dark);
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .Container{
+    & > section {
+      width: 100vw;
+      overflow: hidden;
+    };
+  }
+}
+
+.TaskTotalCount {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-left: 1rem;
+
+  font-family: roboto;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 27px;
+  letter-spacing: 0.5px;
+  color: var(--blue-dark);
+  margin-top: 7rem;
+  align-self: flex-start;
+
+}
+
+.TaskFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 6.10rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    border: none;
+    padding: 15 24 15 24;
+    gap: 0.625rem;
+    /* background: rgba(244, 245, 247, 1); */
+    background-color: var(--blue-light);
+
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 0.94rem;
+    line-height: 17.85px;
+    letter-spacing: 0.7%;
+    align-items: center;
+    color: var(--white);
+
+    cursor: pointer;
+    transition: 0.1s;
+  };
+
+  & button:hover{
+    background-color: var(--green-100);
+  }
+}
+
+.TaskList{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+    
+  & ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  };
+
+  & ul > li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 21rem;
+    height: 9rem;
+    margin-top: 1rem;
+    gap: 5rem;
+
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  };
+
+  & div > button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    background: none;
+  }
+  
+  
+}
+
+.CompleteButton {
+  cursor: pointer;
+}
+
+.CompleteButton:hover {
+  color: var(--green-100);
+}
+
+.ModalDotsThreeVertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px -4px 56px 0px rgba(31, 204, 121, 0.2);
+}
+
+.FooterItem {
+  padding-left: 1rem;
+  padding-right: 1.2rem;
+
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    background: none;
+    color: var(--blue-dark);
+    cursor: pointer;
+  }
+}
+
+.FooterAddTask {
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    background: none;
+    position: relative;
+    top: -30px;
+    cursor: pointer;
+
+    & svg {  
+      border-radius: 50%;
+      background-color: #1FCC79;
+    };
+  }
+}
+
+.OptionsModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.OptionsContent button {
+  border: none;
+  background-color: var(--blue-light);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.OptionsContent button:hover {
+  background-color: var(--green-100);
+}

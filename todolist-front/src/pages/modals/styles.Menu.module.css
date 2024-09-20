@@ -1,0 +1,45 @@
+/* ModalDotsMenu.module.css */
+.Modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.MenuContent {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.CloseButton {
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+}
+
+/* ModalEditTask.module.css */
+.Modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Content {
+  background-color: white;
+  padding: 20px;
+}

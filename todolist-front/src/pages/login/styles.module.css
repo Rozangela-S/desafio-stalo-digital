@@ -3,16 +3,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
   margin-top: 4rem;
 
   & h1 {
     font-family: roboto;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 32px;
     letter-spacing: 0.5px;
     align-items: center;
+    color: var(--blue-dark)
   };
 
   & button {
@@ -20,27 +21,36 @@
     height: 3.5rem;
     border-radius: 1.5rem;
     padding: 19 32 19 32;
-    gap: 10px;
+    gap: 0.625rem;
     border: none;
+    margin-top: 2rem;
     background-color: var(--green-100);
-    font-size: 15px;
+
+    font-size: 0.94rem;
     line-height: 18px;
     letter-spacing: 0.7%;
     align-items: center;
     color: var(--white);
-    margin-top: 2rem;
+
+    cursor: pointer;
+    transition: all 0.1s;
+  };
+
+  & button:hover {
+    border: solid 1px var(--green-100);
+    background-color: var(--green-light);
   }
 }
 
 .FormLogin {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 
   & input {
     width: 18.75rem;
     height: 3.5rem;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     margin-top: 1rem;
     border: solid 1px var(--blue-light);
     border-radius: 1.5rem;
@@ -50,7 +60,7 @@
     align-self: flex-end;
     font-family: Inter;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 0.94rem;
     line-height: 1.5rem;
     letter-spacing: 0.5px;
     align-items: right;
@@ -74,7 +84,7 @@
   & a{
     font-family: roboto;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 0.94rem;
     line-height: 25px;
     letter-spacing: 0.5px;
     align-items: center;

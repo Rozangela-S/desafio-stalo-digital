@@ -76,7 +76,6 @@
     border: none;
     padding: 15 24 15 24;
     gap: 0.625rem;
-    /* background: rgba(244, 245, 247, 1); */
     background-color: var(--blue-light);
 
     font-family: Roboto;
@@ -119,15 +118,27 @@
     justify-content: space-between;
     width: 21rem;
     height: 9rem;
-    margin-top: 1rem;
-    gap: 5rem;
+    border-top: 1px solid rgba(244, 245, 247, 1);
+    border-bottom: 1px solid rgba(244, 245, 247, 1);
+
+    &:hover {
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
 
     & > div {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 0.5rem;
+
+      & > span {
+        display: flex;
+        flex: 1;
+        cursor: pointer;
+      }
     }
   };
 
@@ -140,8 +151,6 @@
     border: none;
     background: none;
   }
-  
-  
 }
 
 .CompleteButton {

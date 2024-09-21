@@ -19,8 +19,8 @@ export function ModalAddTask({ onClose, onAdd }: ModalAddTaskProps) {
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+    <div className={styles.ModalOverlay}>
+      <div className={styles.ModalContent}>
         <h2>Criar nova tarefa</h2>
         <input
           type="text"
@@ -28,11 +28,11 @@ export function ModalAddTask({ onClose, onAdd }: ModalAddTaskProps) {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Descrição"
         />
-        <div className={styles.modalActions}>
-          <button className={styles.cancelButton} onClick={onClose}>
+        <div className={styles.ModalActions}>
+          <button className={styles.CancelButton} onClick={onClose}>
             Cancelar
           </button>
-          <button className={styles.createButton} onClick={handleAddTask}>
+          <button className={styles.CreateButton} onClick={handleAddTask}>
             Criar
           </button>
         </div>

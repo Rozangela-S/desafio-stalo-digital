@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 export function Login() {
   const navigate = useNavigate();
@@ -27,15 +27,39 @@ export function Login() {
     console.log(await response.json());
   }
 
-  const handleLoginFake = () => {
-    navigate('/home');
+  const handleLoginFake = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const dados = localStorage.getItem('dados_login');
+
+    if (dados) {
+      const dadosLogin = (JSON.parse(dados) || []);
+
+      const index = dadosLogin.findIndex((dado) => dado.email === inputEmail);
+
+      if (index != -1) {
+        const login = dadosLogin[index];
+
+        if (login.password === inputPassword && login.email === inputEmail) {
+          alert('Usuário logado com sucesso');
+
+          navigate('/home');
+        } else {
+          alert('Email ou senha inválidos');
+        }
+      } else {
+        alert('Email ou senha inválidos');
+      }
+    } else {
+      alert('Email ou senha inválidos');
+    }
   }
 
   return (
     <main className={styles.Container}>
       <h1>Bem-vindo(a)!</h1>
 
-      <form onSubmit={handleLoginFake}>
+      <form onSubmit={(e) => handleLoginFake(e)}>
         <section className={styles.FormLogin}>        
           <input 
             type="email"

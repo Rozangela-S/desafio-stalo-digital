@@ -1,15 +1,16 @@
 :root {
   --green: #1FCC79;
+  --green-light: #26de86;
   --gray-light: #D0DBEA;
   --gray-light-1: #9FA5C0;
   --gray-dark: #2E3E5C;
+  --blue-gray: #3E5481;
   --white: #FFFFFF;
-  --green-light: #26de86;
   --red: #FF6464;
-
 }
 
 * {
   margin: 0;
   padding: 0;
 }
+

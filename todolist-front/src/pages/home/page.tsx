@@ -5,6 +5,7 @@ import { ModalEditTask } from '../modals/ModalEditTask';
 import { ModalDotsMenu } from '../modals/ModalDotsMenu';
 import {TaskDetails} from '../modals/ModalTaskDetails';
 import { ModalAddTask } from '../modals/ModalCreateTask';
+import { useNavigate } from 'react-router-dom';
 
 type Task = {
   id: string;
@@ -21,13 +22,27 @@ const tasksFake: Task[] = [
 ];
 
 export function Home () {
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState<'Todas' | 'A fazer' | 'Feitas'>('Todas');
   const [tasks, setTasks] = useState<Task[]>(tasksFake);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isOpenMenuOptions, setIsOpenMenuOptions] = useState<boolean>(false);
   const [isOpenModalDetails, setIsOpenModalDetails] = useState<boolean>(false);
   const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
-  const [isAddOpen, setIsAddOpen] = useState<boolean>(false); // Estado para o modal de adicionar nova tarefa
+  const [isAddOpen, setIsAddOpen] = useState<boolean>(false);  
 
+  const showCurrentDate = () => {
+    const currentDate = new Date().toString();
+
+    const currentDateArray = currentDate.split(' ');
+
+    const dia = currentDateArray[0];
+    const mes = currentDateArray[1];
+    const diaNumero = currentDateArray[2];
+    const ano = currentDateArray[3];
+    
+    return `${dia}. ${diaNumero} de ${mes} de ${ano}`;
+  }
 
   const handleOpenModalDetails = (task: Task) => {
     setSelectedTask(task);
@@ -60,9 +75,14 @@ export function Home () {
       const updatedTask = {
         ...selectedTask,
         description: newDescription,
+        lastUpdate: new Date().toLocaleDateString(),
       };
-      console.log('Tarefa editada', updatedTask);
-      setSelectedTask(updatedTask);
+      const updatedTasks = tasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      );
+
+      setTasks(updatedTasks);
+      setSelectedTask(null)
       setIsEditOpen(false);
     }
   };
@@ -78,9 +98,12 @@ export function Home () {
   };
 
   const handleDeleteTask = (taskId: string) => {
-    const updatedTask = tasks.filter((task) => task.id !== taskId);
-    setTasks(updatedTask);
-    console.log('Tarefa Excluida', taskId);
+    const confirmed = window.confirm("tem certeza que deseja excluir essa tarefa?");
+    if(confirmed) {
+      const updatedTasks = tasks.filter(task => task.id !== taskId);
+      setTasks(updatedTasks);
+      console.log('Tarefa Excluída', taskId);
+    }
   };
 
   const handleCloseEditMotal = () => {
@@ -98,6 +121,15 @@ export function Home () {
     setTasks([...tasks, newTask]);
   };
 
+  const handleFilterChange = (newFilter: 'Todas' | 'A fazer' | 'Feitas') => {
+    setFilter(newFilter);
+  };
+
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === 'Todas') return true;
+    return filter === 'A fazer' ? task.status === 'A fazer' : task.status === 'Concluída';
+  });
+
   return (
     <main className={styles.Container}>
       <section>
@@ -105,16 +137,16 @@ export function Home () {
           <h1>Filtrar</h1>
 
           <section className={styles.TaskFilter}>
-            <button>Todas</button>
-            <button>A fazer</button>
-            <button>Feitas</button>
+            <button onClick={() => handleFilterChange('Todas')}>Todas</button>
+            <button onClick={() => handleFilterChange('A fazer')}>A fazer</button>
+            <button onClick={() => handleFilterChange('Feitas')}>Feitas</button>
           </section>  
           
-          <h1>Qua. 17 de março de 2021</h1>
+          <h1>{showCurrentDate()}</h1>
 
           <section className={styles.TaskList}>
             <ul>
-              {tasks.map((task) => {
+              {filteredTasks.map((task) => {
                 return (
                   <li key={task.id}>
                     <div>
@@ -165,7 +197,7 @@ export function Home () {
           </div>
           
           <div className={styles.FooterItem}>
-            <button type='button'>
+            <button type='button' onClick={() => navigate('/login')}>
               <SignOut size={25} />
               Logout
             </button>

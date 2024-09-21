@@ -18,6 +18,13 @@ export const TaskDetails: React.FC<TaskDetailsProps> = ({
   status,
   onClose,
 }) => {
+
+  const formatarData = (data: string) => {
+    const dataArray = data.split('-');
+
+    return `${dataArray[2]}/${dataArray[1]}/${dataArray[0]}`;
+  }
+
   return (
     <div className={styles.Modal}>
       <div className={styles.Content}>
@@ -33,12 +40,12 @@ export const TaskDetails: React.FC<TaskDetailsProps> = ({
 
         <div>
           <label>Data de criação</label>
-          <span>{creationDate}</span>
+          <span>{formatarData(creationDate)}</span>
         </div>
 
         <div>
           <label>Última atualização</label>
-          <span>{lastUpdate}</span>
+          <span>{formatarData(lastUpdate)}</span>
         </div>
 
         <div>

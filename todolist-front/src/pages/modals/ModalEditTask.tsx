@@ -22,21 +22,20 @@ export const ModalEditTask: React.FC<ModalEditTaskProps> = ({
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+    <div className={styles.ModalOverlay}>
+      <div className={styles.ModalContent}>
         <h2>Editar Tarefa</h2>
         <input
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className={styles.input}
           placeholder="Descrição"
         />
-        <div className={styles.modalActions}>
-          <button className={styles.cancelButton} onClick={onClose}>
+        <div className={styles.ModalActions}>
+          <button className={styles.CancelButton} onClick={onClose}>
             Cancelar
           </button>
-          <button className={styles.saveButton} onClick={handleSave}>
+          <button className={styles.SaveButton} onClick={handleSave}>
             Salvar
           </button>
         </div>
